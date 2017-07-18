@@ -17,5 +17,19 @@
   </dependencies>
   <build>
     <finalName>jsfdrools</finalName>
+    <!-- Tomcat plugin -->  
+    <plugins>
+      <plugin>  
+       <groupId>org.apache.tomcat.maven</groupId>  
+       <artifactId>tomcat7-maven-plugin</artifactId>  
+       <version>2.2</version>  
+       <configuration>  
+        <url>http://localhost:8080/manager/text</url>  
+        <server>tomcat8</server> 
+        <username>admin</username>  
+        <password>tomc@t123</password>   
+       </configuration>   
+      </plugin>
+  </plugins>
   </build>
 </project>
