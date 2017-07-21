@@ -8,6 +8,26 @@
   <name>jsfdrools Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+    
+    <!-- JSF -->
+    <dependency>
+     <groupId>org.apache.myfaces.core</groupId>
+     <artifactId>myfaces-api</artifactId>
+     <version>2.2.0</version>
+     </dependency>
+    <dependency>
+     <groupId>org.apache.myfaces.core</groupId>
+     <artifactId>myfaces-impl</artifactId>
+     <version>2.2.0</version>
+    </dependency>
+    <!--Primefaces-->
+    <dependency>
+      <groupId>org.primefaces</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>6.0</version>
+  </dependency>
+
+    <!--Unit Test-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -17,8 +37,9 @@
   </dependencies>
   <build>
     <finalName>jsfdrools</finalName>
-    <!-- Tomcat plugin -->  
+    
     <plugins>
+      <!-- Tomcat plugin -->  
       <plugin>  
        <groupId>org.apache.tomcat.maven</groupId>  
        <artifactId>tomcat7-maven-plugin</artifactId>  
