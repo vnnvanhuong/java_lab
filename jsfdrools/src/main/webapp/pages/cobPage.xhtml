@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://primefaces.org/ui"
+ xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+ <title>Client Onboarding Page</title>
+</h:head>
+<h:body>
+<ui:composition template="../template/commonLayout.xhtml">
+ <f:metadata>
+     <f:viewAction action="#{cobPage.onStart}" />
+ </f:metadata>
+  
+ <ui:define name="content">
+  <h:form id="mainForm">
+  	<h3>Person Info</h3>
+  	<h:outputLabel value="First Name" for="firstName"/><br/>
+  	<p:inputText id="firstName"
+  		value="#{cobPage.metadata.person.firstName.value}"
+  		required="#{cobPage.metadata.person.firstName.required}"
+  		maxlength="#{cobPage.metadata.person.firstName.maxlength}"/><br/>
+  	
+  	<h:outputLabel value="Last Name" for="lastName"/><br/>
+  	<p:inputText id="lastName"
+  		value="#{cobPage.metadata.person.lastName.value}"
+  		required="#{cobPage.metadata.person.lastName.required}"
+  		maxlength="#{cobPage.metadata.person.lastName.maxlength}"/><br/>
+  	
+  	<h:outputLabel value="Birthdate" for="birthdate"/><br/>
+  	<p:calendar id="birthdate"
+  		value="#{cobPage.metadata.person.birthdate.value}"
+  		required="#{cobPage.metadata.person.birthdate.required}"/><br/>
+  	
+  	<h3>Address Info</h3>
+  	<h:outputLabel value="House Number" for="houseNumber"/><br/>
+  	<p:inputText id="houseNumber"
+  		value="#{cobPage.metadata.address.houseNumber.value}"
+  		required="#{cobPage.metadata.address.houseNumber.required}"
+  		maxlength="#{cobPage.metadata.address.houseNumber.maxlength}"/><br/>
+  	
+  	<h:outputLabel value="Street" for="street"/><br/>
+  	<p:inputText id="street"
+  		value="#{cobPage.metadata.address.street.value}"
+  		required="#{cobPage.metadata.address.street.required}"
+  		maxlength="#{cobPage.metadata.address.street.maxlength}"/><br/>
+  	
+  	<hr/>
+  	<p:commandButton value="Submit" actionListener="#{cobPage.onSubmit}" update="mainForm"></p:commandButton>
+  	<p:messages autoUpdate="true"></p:messages>
+  </h:form>
+ </ui:define>
+</ui:composition>
+</h:body>
+</html>
