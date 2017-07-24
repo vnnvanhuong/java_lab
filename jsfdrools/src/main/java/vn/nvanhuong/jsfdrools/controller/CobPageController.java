@@ -1,7 +1,13 @@
 package vn.nvanhuong.jsfdrools.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import org.drools.compiler.DroolsParserException;
 
 import vn.nvanhuong.jsfdrools.domain.Dossier;
 import vn.nvanhuong.jsfdrools.metadata.AddressMeta;
@@ -16,7 +22,7 @@ public class CobPageController {
 	private Dossier datamodel;
 	private DossierMeta metadata;
 
-	public void onStart() {
+	public void onStart() throws DroolsParserException, IOException {
 		//initialized
 		metadata = new DossierMeta();
 		metadata.setAddress(new AddressMeta());
@@ -28,13 +34,12 @@ public class CobPageController {
 		metadata.getPerson().setLastName(new InputMeta());
 		
 		//load rules
-		metadata.getAddress().getHouseNumber().setMaxlength(5);
-		metadata.getAddress().getStreet().setMaxlength(30);
-		metadata.getAddress().getHouseNumber().setRequired(true);
-		metadata.getAddress().getStreet().setRequired(true);
+		List<Object> objects = new ArrayList<Object>();
+		objects.add(metadata.getAddress());
+		objects.add(metadata.getPerson());
 		
-		metadata.getPerson().getFirstName().setMaxlength(30);
-		metadata.getPerson().getLastName().setMaxlength(30);
+		RuleExecutor re = new RuleExecutor();
+		re.execute(objects);
 	}
 	
 	public void onSubmit() {

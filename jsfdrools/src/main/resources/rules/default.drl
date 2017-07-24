@@ -1,0 +1,29 @@
+package vn.nvanhuong.jsfdrools
+import vn.nvanhuong.jsfdrools.metadata.AddressMeta
+import vn.nvanhuong.jsfdrools.metadata.PersonMeta;
+
+rule "Rule for Address"
+	dialect "mvel"
+	
+    when
+        $address: AddressMeta()
+    then
+        $address.houseNumber.maxlength = 5;
+        $address.houseNumber.required = true;
+        $address.street.maxlength = 30;
+        $address.street.required = true;
+end
+
+rule "Rule for Person"
+	dialect "mvel"
+	
+    when
+        $person: PersonMeta()
+    then
+        $person.firstName.maxlength = 15;
+        $person.firstName.required = true;
+        $person.lastName.maxlength = 15;
+        $person.lastName.required = true;
+        $person.birthdate.required = false;
+end
+
