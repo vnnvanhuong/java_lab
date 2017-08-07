@@ -18,33 +18,60 @@
   	<h3>Person Info</h3>
   	<h:outputLabel value="First Name" for="firstName"/><br/>
   	<p:inputText id="firstName"
-  		value="#{cobPage.metadata.person.firstName.value}"
+  		value="#{cobPage.datamodel.person.firstName}"
   		required="#{cobPage.metadata.person.firstName.required}"
-  		maxlength="#{cobPage.metadata.person.firstName.maxlength}"/><br/>
+  		maxlength="#{cobPage.metadata.person.firstName.maxlength}">
+  		<p:ajax event="change" 
+  			process="@form"
+  			update="@form"
+  			listener="#{cobPage.onValueChange}"></p:ajax>
+  	</p:inputText><br/>
   	
   	<h:outputLabel value="Last Name" for="lastName"/><br/>
   	<p:inputText id="lastName"
-  		value="#{cobPage.metadata.person.lastName.value}"
+  		value="#{cobPage.datamodel.person.lastName}"
   		required="#{cobPage.metadata.person.lastName.required}"
-  		maxlength="#{cobPage.metadata.person.lastName.maxlength}"/><br/>
+  		maxlength="#{cobPage.metadata.person.lastName.maxlength}">
+  		<p:ajax event="change" 
+  			process="@form"
+  			update="@form"
+  			listener="#{cobPage.onValueChange}"></p:ajax>
+  	</p:inputText><br/>
   	
   	<h:outputLabel value="Birthdate" for="birthdate"/><br/>
   	<p:calendar id="birthdate"
   		value="#{cobPage.metadata.person.birthdate.value}"
-  		required="#{cobPage.metadata.person.birthdate.required}"/><br/>
+  		required="#{cobPage.metadata.person.birthdate.required}">
+  		<p:ajax event="change" 
+  			process="@form"
+  			update="@form"
+  			listener="#{cobPage.onValueChange}"></p:ajax>
+  	</p:calendar><br/>
   	
   	<h3>Address Info</h3>
   	<h:outputLabel value="House Number" for="houseNumber"/><br/>
   	<p:inputText id="houseNumber"
   		value="#{cobPage.metadata.address.houseNumber.value}"
   		required="#{cobPage.metadata.address.houseNumber.required}"
-  		maxlength="#{cobPage.metadata.address.houseNumber.maxlength}"/><br/>
+  		maxlength="#{cobPage.metadata.address.houseNumber.maxlength}">
+  		<p:ajax event="change" 
+  			process="@form"
+  			update="@form"
+  			listener="#{cobPage.onValueChange}"></p:ajax>
+  	</p:inputText>
+  	<br/>
   	
   	<h:outputLabel value="Street" for="street"/><br/>
   	<p:inputText id="street"
   		value="#{cobPage.metadata.address.street.value}"
   		required="#{cobPage.metadata.address.street.required}"
-  		maxlength="#{cobPage.metadata.address.street.maxlength}"/><br/>
+  		maxlength="#{cobPage.metadata.address.street.maxlength}">
+ 		<p:ajax event="change" 
+ 			process="@form"
+ 			update="@form"
+ 			listener="#{cobPage.onValueChange}"></p:ajax>
+  	</p:inputText>
+  	<br/>
   	
   	<hr/>
   	<p:commandButton value="Submit" actionListener="#{cobPage.onSubmit}" update="mainForm"></p:commandButton>

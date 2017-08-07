@@ -54,3 +54,4 @@ public class RuleExecutor {
         return workingMemory;
     }
 }
+

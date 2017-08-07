@@ -1,6 +1,7 @@
 package vn.nvanhuong.jsfdrools
 import vn.nvanhuong.jsfdrools.metadata.AddressMeta
-import vn.nvanhuong.jsfdrools.metadata.PersonMeta;
+import vn.nvanhuong.jsfdrools.metadata.PersonMeta
+import vn.nvanhuong.jsfdrools.domain.Person
 
 rule "Rule for Address"
 	dialect "mvel"
@@ -25,5 +26,14 @@ rule "Rule for Person"
         $person.lastName.maxlength = 15;
         $person.lastName.required = true;
         $person.birthdate.required = false;
+end
+
+rule "Special Rules"
+	dialect "mvel"
+	
+    when
+        $person: Person(firstName =="huong")
+    then
+        $person.lastName = "nguyen";
 end
 
