@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+ <h:head>
+  <title>JSF Page</title>
+ </h:head>
+ <h:body>
+  	<h1>Hello World!</h1>
+	<h:form prependId="false">
+	   <h:panelGroup id="wrapper">
+			<h:outputLabel value="Your age:" for="age"/><br/>
+			<h:inputText id="age" pt:type="number"
+				value="#{data.age}" 
+				required="true" requiredMessage="This field is required"
+				onchange="onUpdateSlider()">
+				<f:ajax event="change" execute="@this" render="@this ageMsg" />
+			</h:inputText>
+			<h:message for="age" id="ageMsg" style="color: red;"/>
+			
+			<br/>
+			<div class="range">
+				<h:inputText id="ageSlider" pt:type="range"
+					value="#{data.ageSlider}"
+					pt:min="0" pt:max="10" pt:step="1"
+					onchange="onUpdateInput()"  >
+				</h:inputText>
+			</div>
+		</h:panelGroup>
+	</h:form>
+	<script>
+		function onUpdateInput(){
+			var sliderInput = document.getElementById("age")
+			var slider = document.getElementById("ageSlider");
+			
+			sliderInput.value = slider.value;
+			document.getElementById("age").dispatchEvent(new Event("change"));
+			
+		}
+		
+		function onUpdateSlider(){
+			var sliderInput = document.getElementById("age")
+			var slider = document.getElementById("ageSlider");
+			
+			slider.value = sliderInput.value;
+		}
+	</script>
+ </h:body>
+</html>
