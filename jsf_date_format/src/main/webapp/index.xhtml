@@ -2,14 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
  xmlns:f="http://java.sun.com/jsf/core"
  xmlns:h="http://java.sun.com/jsf/html"
- xmlns:p="http://primefaces.org/ui">
+ xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
  <h:head>
   <title>JSF Page</title>
  </h:head>
  <h:body>
-  	<h1>Hello World!</h1>
-	<h:form>
-	   <p:editor value="#{data.greeting}" />
+  	<h1>Date Converter</h1>
+	<h:form id="myform">
+	   <h:inputText id="birthdate" value="#{data.birthdate}" 
+	   	type="date" pt:placeholder="DD.MM.YYYY" >
+			<f:converter converterId="myDateTimeConverter" /> 
+ 			<f:ajax event="change" 
+ 					listener="#{data.onCalculate}" 
+ 					execute="@this"
+					render="@this" />
+ 		</h:inputText>
 	</h:form>
  </h:body>
 </html>
