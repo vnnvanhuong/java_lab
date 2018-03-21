@@ -7,9 +7,38 @@
   <title>Primefaces Page</title>
  </h:head>
  <h:body>
-  	<h1>Hello World!</h1>
+  	<h1>Main Headline</h1>
+  	<h2>Sub Headline</h2>
+  
+  	<h1>Forms</h1>
 	<h:form>
-	   <p:editor value="#{data.greeting}"></p:editor>
+		<p:selectOneRadio id="radio" value="#{data.radio}">
+			<f:selectItem itemLabel="Radio button active" itemValue="true" />
+            <f:selectItem itemLabel="Radio button not active" itemValue="false" />
+		</p:selectOneRadio>
+		
+		<p:separator/>		
+        <p:selectBooleanCheckbox value="#{data.checkboxPrimary}" />
+        <h:outputText value="Check button active" />
+        <br/>
+        <p:selectBooleanCheckbox value="#{data.checkboxSecondary}"/>
+        <h:outputText value="Check button not active" />
+        
+        <p:separator/>
+        <p:outputLabel value="Input field" for="inputText"/><br/>
+        <p:tooltip value="This is tooltip" for="inputText"/>
+        <p:inputText id="inputText" value="#{data.inputText}"/>
+        
+        <p:separator/>
+        <p:outputLabel value="Pulldown select" for="combobox"/> <br/>
+        <p:selectOneMenu id="combobox" value="#{data.combobox}">
+        		<f:selectItem itemLabel="Option 1" itemValue="1"/>
+        		<f:selectItem itemLabel="Option 2" itemValue="2"/>
+        </p:selectOneMenu>
+        
+        <p:separator/>
+        <p:outputLabel value="Calendar" for="calendar"/> <br/>
+        <p:calendar value="#{data.calendar}" id="calendar"/>
 	</h:form>
  </h:body>
 </html>
