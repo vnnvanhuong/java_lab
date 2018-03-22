@@ -37,12 +37,7 @@
 			<version>5.3</version>
 		</dependency>
 
-		<!-- Primefaces' Themes -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>afterdark</artifactId>
-			<version>1.0.8</version>
-		</dependency>
+		
 	</dependencies>
 
 	<build>
